@@ -1,7 +1,14 @@
+package com.nothing.netty.test.client;
+
 import com.tyning.nothing.netty.http.client.TimeClient;
 
 /**
- * Created by haining on 2017/11/21.
+ * time client test
+ * 
+ * @author:tyning
+ * 
+ * @createDate:2017/11/21
+ *
  */
 public class Test {
     @org.junit.Test
