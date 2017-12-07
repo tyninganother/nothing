@@ -19,18 +19,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  *
  */
 public class TimeClient {
-
-    //首先我先做的事情是协议个客户端
-    //那么这个客户端需要完成什么任务呢?
-    //要建立一个连接,然后传输协议
-    //那么这两部分我是放在一个方法来时两个方法里呢?
-    //这个吧都是可以的
-
-    public void sendMessage(){
-        String host = "http://10.10.1.238/";
-        int port = Integer.parseInt("8081");
+    public void sendMessage(String host,int port){
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-
         try {
             Bootstrap b = new Bootstrap(); // (1)
             b.group(workerGroup); // (2)
@@ -45,7 +35,6 @@ public class TimeClient {
 
             // Start the client.
             ChannelFuture f = b.connect(host, port).sync(); // (5)
-
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
