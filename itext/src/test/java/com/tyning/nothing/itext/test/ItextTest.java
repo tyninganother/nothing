@@ -1,12 +1,17 @@
 package com.tyning.nothing.itext.test;
 
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import com.tyning.nothing.io.text.CompareTextFile;
 import com.tyning.nothing.itext.ItextAddFieldUtil;
 import com.tyning.nothing.itext.ItextComponent;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class ItextTest {
     public static final String DEST = "/test/field_added.pdf";
@@ -50,7 +55,17 @@ public class ItextTest {
                 "<br/>\n" +
                 "</body>\n" +
                 "</html>";
-//        ItextAddFieldUtil.manipulatePdfPushbuttonField(ItextComponent.coverHtmlStrToPdfFileIoBytes(html), DEST);
         ItextAddFieldUtil.manipulatePdfText(ItextComponent.coverHtmlStrToPdfFileIoBytes(html), DEST);
+    }
+
+    @Test
+    public void compareTest() throws IOException, DocumentException {
+        CompareTextFile.compare();
+    }
+
+    @Test
+    public void readTextFromPdfTest(){
+        String path = "src/main/resources/pdf/";
+
     }
 }

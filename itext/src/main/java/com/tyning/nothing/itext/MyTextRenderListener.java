@@ -12,8 +12,10 @@ import java.util.List;
 
 public class MyTextRenderListener implements RenderListener {
 
-    List<PdfCoordinate> textInPdfCoordinates = new ArrayList<>();
+    private List<PdfCoordinate> textInPdfCoordinates = new ArrayList<>();
+
     private int pageNum;
+
     private String keyWord;
 
     MyTextRenderListener(int pageNum, String keyWord) {
@@ -30,16 +32,19 @@ public class MyTextRenderListener implements RenderListener {
         String text = textRenderInfo.getText();
         if (null != text && text.contains(keyWord)) {
             Rectangle2D.Float boundingRectange = textRenderInfo.getBaseline().getBoundingRectange();
-            textInPdfCoordinates.add(new PdfCoordinate(pageNum,boundingRectange.x, boundingRectange.y));
+            textInPdfCoordinates.add(new PdfCoordinate(pageNum, boundingRectange.x, boundingRectange.y));
         }
     }
 
     @Override
-    public void renderImage(ImageRenderInfo arg0) {}
+    public void renderImage(ImageRenderInfo arg0) {
+    }
 
     @Override
-    public void endTextBlock() {}
+    public void endTextBlock() {
+    }
 
     @Override
-    public void beginTextBlock() {}
+    public void beginTextBlock() {
+    }
 }

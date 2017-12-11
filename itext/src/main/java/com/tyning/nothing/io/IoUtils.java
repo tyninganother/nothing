@@ -1,8 +1,6 @@
 package com.tyning.nothing.io;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * IO util
@@ -39,4 +37,63 @@ public class IoUtils {
         }
         return null;
     }
+
+    /**
+     * write String ：write String to file
+     *
+     * @param str
+     * @param desc
+     * @throws Exception
+     */
+    public static void writeStringToFile(String str, String desc) throws Exception {
+        FileOutputStream fileOutputStream = null;
+        try {
+            new FileOutputStream(desc);
+            byte[] strBytes = str.getBytes();
+            for (int i = 0; i * 1024 < strBytes.length; i++) {
+                fileOutputStream.write(strBytes, i, 1024);
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (fileOutputStream != null) {
+                fileOutputStream.close();
+            }
+        }
+
+    }
+
+    /**
+     * filepath conver: filepath to bytes
+     *
+     * @param file
+     * @return
+     */
+    public static byte[] fileToBytes(File file) throws IOException {
+        byte[] buffer = null;
+        FileInputStream fileInputStream = null;
+        ByteArrayOutputStream byteArrayOutputStream = null;
+        try {
+            fileInputStream = new FileInputStream(file);
+            byteArrayOutputStream = new ByteArrayOutputStream();
+            byte[] b = new byte[1000];
+            int n;
+            while ((n = fileInputStream.read(b)) != -1) {
+                byteArrayOutputStream.write(b, 0, n);
+            }
+            buffer = byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (fileInputStream != null) {
+                fileInputStream.close();
+            }
+            if (byteArrayOutputStream != null) {
+                byteArrayOutputStream.close();
+            }
+        }
+        return buffer;
+    }
+
+
 }

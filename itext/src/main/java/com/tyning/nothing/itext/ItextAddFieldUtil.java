@@ -9,23 +9,6 @@ import java.io.IOException;
 
 public class ItextAddFieldUtil {
 
-    public static void manipulatePdfPushbuttonField(byte[] srcbytes, String dest) throws DocumentException, IOException, NullPointerException {
-        PdfReader reader = new PdfReader(srcbytes);
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
-        PushbuttonField button = new PushbuttonField(
-                stamper.getWriter(), new Rectangle(36, 700, 72, 730), "post");
-        button.setText("POST");
-        button.setBackgroundColor(new GrayColor(0.7f));
-        button.setVisibility(PushbuttonField.VISIBLE_BUT_DOES_NOT_PRINT);
-        PdfFormField submit = button.getField();
-        submit.setAction(PdfAction.createSubmitForm(
-                "http://itextpdf.com:8180/book/request", null,
-                PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
-        stamper.addAnnotation(submit, 1);
-        stamper.close();
-
-    }
-
     public static void manipulatePdfText(byte[] srcbytes, String dest) throws IOException, DocumentException, NullPointerException {
         PdfReader reader = new PdfReader(srcbytes);
         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
