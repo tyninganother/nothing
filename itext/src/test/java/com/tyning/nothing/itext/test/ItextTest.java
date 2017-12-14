@@ -1,17 +1,15 @@
 package com.tyning.nothing.itext.test;
 
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import com.tyning.nothing.io.IoUtils;
 import com.tyning.nothing.io.text.CompareTextFile;
+import com.tyning.nothing.io.text.RemoveHtmlCode;
 import com.tyning.nothing.itext.ItextAddFieldUtil;
 import com.tyning.nothing.itext.ItextComponent;
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class ItextTest {
     public static final String DEST = "/test/field_added.pdf";
@@ -64,8 +62,32 @@ public class ItextTest {
     }
 
     @Test
-    public void readTextFromPdfTest(){
-        String path = "src/main/resources/pdf/";
+    public void readTextFromPdfTest() throws Exception {
+        String pdfPath = "src/main/resources/pdf/";
+        String pdfTxtPath = "src/main/resources/pdf/txt/";
+        File[] pdfList = new File(pdfPath).listFiles();
+        for (File file : pdfList) {
+            if (file.isFile() && file.getAbsolutePath().endsWith("pdf")) {
+                System.out.println("*********************************************************");
+                IoUtils.writeStringToFile(ItextComponent.getTextFromPdf(file.getAbsolutePath()),pdfTxtPath+file.getName()+".txt");
+                System.out.println("*********************************************************");
+            }
+        }
+        String vmPath = "src/main/resources/vm/";
+        String vmTxtPath = "src/main/resources/vm/txt/";
+        File[] vmList = new File(vmPath).listFiles();
+        for (File file : vmList) {
+            if (file.isFile() && file.getAbsolutePath().endsWith("vm")) {
+                System.out.println("*********************************************************");
+                IoUtils.writeStringToFile(RemoveHtmlCode.removeHtml(IoUtils.getTxtToString(file)),vmTxtPath+file.getName()+".txt");
+                System.out.println("*********************************************************");
+            }
+        }
 
+    }
+
+    public void write(String desc) throws Exception {
+        String filetxtcontent = ItextComponent.getTextFromPdf("");
+        IoUtils.writeStringToFile(filetxtcontent,desc);
     }
 }

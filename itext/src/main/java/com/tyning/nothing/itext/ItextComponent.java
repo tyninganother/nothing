@@ -3,6 +3,7 @@ package com.tyning.nothing.itext;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
+import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.tool.xml.XMLWorkerFontProvider;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 import com.tyning.nothing.itext.bean.PdfCoordinate;
@@ -83,7 +84,12 @@ public class ItextComponent {
     }
 
     /**
-     * 将数据，填入pdf表单域
+     * fill data in pdf by pdfReader Object
+     *
+     * @param template
+     * @param data
+     * @return
+     * @throws Exception
      */
     public static OutputStream generate(PdfReader template, Map data)
             throws Exception {
@@ -124,7 +130,7 @@ public class ItextComponent {
 
 
     /**
-     * 获取pdf中关键字的坐标
+     * get keywords coordinates from pdf
      *
      * @param filePath
      * @param keyWord
@@ -147,9 +153,33 @@ public class ItextComponent {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("在pdf文件[filePath:" + filePath + "]获取关键字[keyWord:" + keyWord + "]失败.");
+            throw new RuntimeException("from pdf[filePath:" + filePath + "]get keywords [keyWord:" + keyWord + "] failure.");
         }
         return (textInPdfCoordinates == null || textInPdfCoordinates.size() < 1) ? null : textInPdfCoordinates;
+    }
+
+    /**
+     * get txt content from file that 'filePath' is pointed ,is pdf type
+     *
+     * @param filePath
+     * @return
+     */
+    public static String getTextFromPdf(String filePath) {
+        StringBuffer result = new StringBuffer();
+        try {
+            PdfReader pdfReader = new PdfReader(filePath);
+            int pageNum = pdfReader.getNumberOfPages();
+            PdfReaderContentParser pdfReaderContentParser = new PdfReaderContentParser(pdfReader);
+            if (pageNum > 0) {
+                for (int i = 1; i <= pageNum; i++) {
+                    SimpleTextExtractionStrategy simpleTextExtractionStrategy = pdfReaderContentParser.processContent(i, new SimpleTextExtractionStrategy());
+                    result.append(simpleTextExtractionStrategy.getResultantText());
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("getTextFromPdf[" + filePath + "]",e);
+        }
+        return result != null && result.length() > 0 ? result.toString() : null;
     }
 
 }

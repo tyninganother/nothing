@@ -48,8 +48,8 @@ public class IoUtils {
     public static void writeStringToFile(String str, String desc) throws Exception {
         FileOutputStream fileOutputStream = null;
         try {
-            new FileOutputStream(desc);
-            byte[] strBytes = str.getBytes();
+            fileOutputStream = new FileOutputStream(desc);
+            byte[] strBytes = str.getBytes("UTF-8");
             for (int i = 0; i * 1024 < strBytes.length; i++) {
                 fileOutputStream.write(strBytes, i, 1024);
             }
@@ -95,5 +95,27 @@ public class IoUtils {
         return buffer;
     }
 
+    /**
+     * get txt from file be txt type
+     *
+     * @param file
+     * @return
+     */
+    public static String getTxtToString(File file){
+        StringBuilder result = new StringBuilder();
+        try{
+            //构造一个BufferedReader类来读取文件
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String s = null;
+            //使用readLine方法，一次读一行
+            while((s = br.readLine())!=null){
+                result.append(System.lineSeparator()+s);
+            }
+            br.close();
+        }catch(Exception e){
+            throw new RuntimeException("",e);
+        }
+        return result.toString();
+    }
 
 }
