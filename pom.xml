@@ -12,6 +12,8 @@
         <module>netty</module>
         <module>spring</module>
         <module>itext</module>
+        <module>data</module>
+        <module>baseutil</module>
     </modules>
 
 

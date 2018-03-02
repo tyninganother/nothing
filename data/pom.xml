@@ -9,10 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tyning.nothing</groupId>
-    <artifactId>spring</artifactId>
+    <groupId>com.tyning.nothing.data</groupId>
+    <artifactId>data</artifactId>
+
     <build>
-        <finalName>spring</finalName>
+        <finalName>data</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -39,7 +40,7 @@
                             <fileset>
                                 <directory>target</directory>
                                 <includes>
-                                    <include>spring</include>
+                                    <include>data</include>
                                 </includes>
                             </fileset>
                         </filesets>

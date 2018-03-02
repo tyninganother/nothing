@@ -9,10 +9,8 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 import com.tyning.nothing.itext.bean.PdfCoordinate;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -50,7 +48,7 @@ public class ItextComponent {
             PdfPageEventHelper pdfPageEventHelper = new PdfPageEventHelper();
             pdfPageEventHelper.onEndPage(pdfWriter, document);
             XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
-            worker.parseXHtml(pdfWriter, document, htmlSteam, null, new AsianFontProvider());
+            worker.parseXHtml(pdfWriter, document, htmlSteam, null, Charset.forName("UTF-8"), new AsianFontProvider());
             document.close();
             pdfbytes = outputStream.toByteArray();
         } catch (Exception e) {
@@ -180,6 +178,32 @@ public class ItextComponent {
             throw new RuntimeException("getTextFromPdf[" + filePath + "]",e);
         }
         return result != null && result.length() > 0 ? result.toString() : null;
+    }
+
+    /**
+     * 获取没有没有水印没有章图片没有签名的pdf的file
+     *
+     * @param fileName
+     * @param content
+     * @return
+     */
+    public static File createPdfFile(String fileName, String content) {
+        try {
+            Document document = new Document(PageSize.A4);
+            PdfWriter pdfWriter = PdfWriter.getInstance(document,
+                    new FileOutputStream(fileName));
+            document.open();
+            PdfPageEventHelper pdfPageEventHelper = new PdfPageEventHelper();
+            pdfPageEventHelper.onEndPage(pdfWriter,document);
+            XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
+            worker.parseXHtml(pdfWriter, document, new ByteArrayInputStream(content.getBytes()), null, new AsianFontProvider());
+            document.close();
+            File file = new File(fileName);
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
