@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class UtilTest {
 
@@ -13,9 +14,12 @@ public class UtilTest {
     public void testSerializable(){
 //        String projectIdstr = "2";
 //        System.out.println(projectIdstr.replaceAll("1","1"));
-        long a= 11321l;
-        Long b = 111l;
-        System.out.println(b.equals(new Long(a)));
+//        String filePath = "//fdsafdsa//fasfdsa/fdsafdsa";
+//        if (filePath.contains("//")){
+//            filePath = filePath.replaceAll("//","/");
+//        }
+//        System.out.println(filePath);
+       System.out.println( new BigDecimal("10.1000").setScale(2, RoundingMode.HALF_UP).toString());
     }
 
 
