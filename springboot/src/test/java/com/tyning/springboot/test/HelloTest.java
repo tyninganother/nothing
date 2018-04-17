@@ -1,6 +1,6 @@
 package com.tyning.springboot.test;
 
-import com.tyning.springboot.main.HelloWorldController;
+import com.tyning.springboot.controller.HelloWorldController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
