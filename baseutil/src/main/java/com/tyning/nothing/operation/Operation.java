@@ -1,0 +1,51 @@
+package com.tyning.nothing.operation;
+
+public class Operation {
+    public static void  main(String[] args){
+        //按位与（&）
+        System.out.println("按位与（&）");
+        System.out.println(9|10);
+        System.out.println(1&0);
+        System.out.println(0&0);
+        System.out.println(1&1);
+        System.out.println(0&1);
+        System.out.println(true&false);
+        System.out.println(true&true);
+        System.out.println(false&false);
+        System.out.println(false&true);
+        //按位或（|）
+        System.out.println("按位或（|）");
+        System.out.println(1|0);
+        System.out.println(0|0);
+        System.out.println(1|1);
+        System.out.println(0|1);
+        System.out.println(true|false);
+        System.out.println(true|true);
+        System.out.println(false|false);
+        System.out.println(false|true);
+        //按位异或（^）
+        System.out.println("按位异或（^）");
+        System.out.println(1^0);
+        System.out.println(0^0);
+        System.out.println(1^1);
+        System.out.println(0^1);
+        System.out.println(true^false);
+        System.out.println(true^true);
+        System.out.println(false^false);
+        System.out.println(false^true);
+        //左位移（<<）
+        System.out.println("左位移（<<）");
+        System.out.println(8<<1);
+        System.out.println(8<<2);
+        System.out.println(8<<3);
+        System.out.println(8<<4);
+        System.out.println(8>>>1);
+        System.out.println(8>>>2);
+        System.out.println(8>>>3);
+        System.out.println(8>>>4);
+        System.out.println(8>>1);
+        System.out.println(8>>2);
+        System.out.println(8>>3);
+        System.out.println(8>>4);
+    }
+}
