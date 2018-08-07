@@ -11,19 +11,12 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 
 public class MyDatagramChannelClient {
-    private int port = 9975;
-    Selector selector;
-    DatagramChannel datagramChannel;
-    ByteBuffer byteBuffer;
-
     public void init() throws IOException {
-        selector = Selector.open();
-        datagramChannel = DatagramChannel.open();
-        SocketAddress socketAddress = new InetSocketAddress("localhost", port);
-        datagramChannel.bind(socketAddress);
-//        datagramChannel.socket().bind(new InetSocketAddress(port));
-        //注册事件
-        datagramChannel.register(selector, SelectionKey.OP_ACCEPT);
+
+    }
+
+    public static void main(String[] args) throws IOException {
+
     }
 
 }
