@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
-public class MyDatagramChannelClient {
+public class MyFileChannelDemo {
     public void init() throws IOException {
     }
 
@@ -12,10 +12,7 @@ public class MyDatagramChannelClient {
         SocketChannel service = null;
         Selector serviceSelector = null;
         service.register(serviceSelector, 1);
-
         SocketChannel client = null;
-
-
     }
 
 }

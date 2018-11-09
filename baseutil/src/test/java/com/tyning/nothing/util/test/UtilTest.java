@@ -21,12 +21,11 @@ public class UtilTest {
 //        String filePath = "//fdsafdsa//fasfdsa/fdsafdsa";
 //        if (filePath.contains("//")){
 //            filePath = filePath.replaceAll("//","/");
-//        }
 //        System.out.println(filePath);
-       System.out.println( new BigDecimal("10.1000").setScale(2, RoundingMode.HALF_UP).toString());
+       for (int i = 0 ;i<100000000;i++){
+           System.out.println( new BigDecimal("10.1000").setScale(2, RoundingMode.HALF_UP).toString());
+       }
     }
-
-
 
 
 
