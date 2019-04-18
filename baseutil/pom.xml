@@ -25,28 +25,24 @@
             <version>2.4</version>
         </dependency>
         <dependency>
-            <groupId>MavenRepository.com.aliyun.openservices</groupId>
+            <groupId>com.aliyun.openservices</groupId>
             <artifactId>ons-client</artifactId>
             <version>1.2.7.Final</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>MavenRepository.org.apache.httpcomponents</groupId>
+            <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.6</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>MavenRepository.apache-httpclient</groupId>
+            <groupId>apache-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
             <version>3.1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>MavenRepository.org.apache.httpcomponents</groupId>
+            <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.3</version>
-            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/gui.ava/html2image -->
         <!--<dependency>-->
