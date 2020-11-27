@@ -16,6 +16,9 @@
         <module>data</module>
         <module>baseutil</module>
         <module>nio</module>
+        <module>thread</module>
+        <module>zookeeper</module>
+        <!--        <module>leetlintcode</module>-->
     </modules>
     <dependencies>
         <dependency>
