@@ -9,8 +9,6 @@ public class MyProxyHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        ArrayList;
-        LinkedList;
         System.out.println("fdsafdasfdsafdsa");
         method.invoke(proxy, args);
         return null;
