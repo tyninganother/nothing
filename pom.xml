@@ -18,6 +18,8 @@
         <module>nio</module>
         <module>thread</module>
         <module>zookeeper</module>
+        <module>springcloudclient</module>
+        <module>jdk1_8</module>
         <!--        <module>leetlintcode</module>-->
     </modules>
     <dependencies>

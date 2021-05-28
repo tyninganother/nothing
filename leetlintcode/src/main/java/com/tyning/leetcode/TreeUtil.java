@@ -41,6 +41,8 @@ public class TreeUtil {
             // 右结点，如果数组的长度为奇数才有右结点
             if (array.length % 2 == 1) {
                 list.get(lastIndex).right = list.get(lastIndex * 2 + 2);
+            } else {
+                list.hashCode();
             }
         }
         return list;
